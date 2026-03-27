@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comisiones Digitales UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            --bg-body: #f0f2f5;
+            --iphone-border: #1e272e;
+            --card-white: #ffffff;
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --whatsapp: #25D366;
+            --discord: #5865F2;
+            --google-ai-box: #f8f9fa;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Marco del Celular */
+        .phone-frame {
+            width: 360px;
+            height: 720px;
+            background: var(--card-white);
+            border: 10px solid var(--iphone-border);
+            border-radius: 45px;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.25);
+            overflow: hidden;
+        }
+
+        /* Animación de entrada para pestañas */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .screen {
+            padding: 25px;
+            height: calc(100% - 70px);
+            display: none;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .active { display: block; }
+
+        /* Contenedor de Imagen de Muestra */
+        .image-display {
+            width: 100%;
+            height: 240px;
+            background: #f1f2f6;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .image-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        /* Títulos y Etiquetas */
+        h1 { font-size: 1.7rem; margin: 0 0 10px 0; color: var(--text-dark); letter-spacing: -0.5px; }
+        .price-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+        }
+
+        .description {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        /* CASILLA DE CONTACTO (Estilo Google AI Plus) */
+        .contact-box {
+            background-color: var(--google-ai-box);
+            border: 1px solid #dadce0;
+            border-radius: 18px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px; /* Botones uno arriba del otro */
+            margin-top: 10px;
+        }
+
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            color: white;
+        }
+
+        .btn-social:active { transform: scale(0.97); }
+
+        .whatsapp { background-color: var(--whatsapp); box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); }
+        .discord { background-color: var(--discord); box-shadow: 0 4px 12px rgba(88, 101, 242, 0.2); }
+
+        /* Barra de Navegación Flotante */
+        .nav-bar {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .nav-dot {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #b2bec3;
+            font-weight: 800;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-dot.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+            transform: translateY(-5px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="phone-frame">
+        
+        <section id="tab1" class="screen active">
+            <div class="image-display">
+                <img src="WhatsApp Image 2026-03-27 at 2.41.18 PM.jpeg" alt="Inicio">
+            </div>
+            <h1>Comisiones</h1>
+            <p class="description">¡Hola! Aquí puedes ver mis precios y estilos. Si te interesa algo, escríbeme por mis redes oficiales:</p>
+            
+            <div class="contact-box">
+                <a href="https://wa.me/524771286052" target="_blank" class="btn-social whatsapp">
+                    Enviar WhatsApp
+                </a>
+                <a href="https://discord.com/users/dakilite" target="_blank" class="btn-social discord">
+                    Agregar a Discord
+                </a>
+            </div>
+        </section>
+
+        <section id="tab2" class="screen">
+            <div class="image-display">
+                <img src="WhatsApp Image 2026-03-27 at 2.41.29 PM.jpeg" alt="Doodle">
+            </div>
+            <span class="price-badge">$100 MXN</span>
+            <h1>Doodle Page</h1>
+            <p class="description">Dibujo lineal sin render ni color. Es el formato ideal para libros de colorear. Incluye de 3 a 5 poses diferentes de tu personaje.</p>
+        </section>
+
+        <section id="tab3" class="screen">
+            <div class="image-display">
+                <img src="WhatsApp Image 2026-03-27 at 2.41.34 PM.jpeg" alt="Render">
+            </div>
+            <span class="price-badge">$150 MXN</span>
+            <h1>Rendered Icon</h1>
+            <p class="description">Proporciono un render de alta calidad de tu personaje con colores sólidos y un fondo sencillo, listo para usar en perfiles.</p>
+        </section>
+
+        <nav class="nav-bar">
+            <div class="nav-dot active" onclick="changeTab(1)">1</div>
+            <div class="nav-dot" onclick="changeTab(2)">2</div>
+            <div class="nav-dot" onclick="changeTab(3)">3</div>
+        </nav>
+    </div>
+
+    <script>
+        function changeTab(index) {
+            // Quitamos la clase active de todas las pantallas y botones
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-dot').forEach(d => d.classList.remove('active'));
+
+            // Activamos la pestaña y el botón correspondiente
+            document.getElementById('tab' + index).classList.add('active');
+            document.querySelectorAll('.nav-dot')[index - 1].classList.add('active');
+        }
+    </script>
+</body>
+</html>
